@@ -1,6 +1,8 @@
 from InstagramAPI import InstagramAPI
+import sys
 
-instaObject = InstagramAPI("username", "password")
+username, password, option = sys.argv[1], sys.argv[2], sys.argv[3]
+instaObject = InstagramAPI(username, password)
 
 def findBadFriends():
     followers = []
@@ -12,7 +14,6 @@ def findBadFriends():
 
     badFriends = set(following).difference(set(followers))
     print(badFriends)  
-
 
 def main():
     instaObject.login()
