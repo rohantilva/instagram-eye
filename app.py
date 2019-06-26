@@ -8,7 +8,13 @@ def findBadFriends():
     followers = getFollowers()
     following = getFollowing()
     badFriends = set(following).difference(set(followers))
-    print(badFriends)  
+    return badFriends  
+
+def findUnfollowingFollowers():
+    followers = getFollowers()
+    following = getFollowing()
+    goodFriends = set(followers).difference(set(following))
+    return goodFriends
 
 def getFollowers():
     followers = []
@@ -31,7 +37,7 @@ def getVerifiedFollowing():
     
 def main():
     instaObject.login()
-
+    print(findUnfollowingFollowers())
 
 
 if __name__ == "__main__":
