@@ -34,10 +34,30 @@ def getVerifiedFollowing():
         if person.get("is_verified"):
             verified.append(person.get("username"))
     return verified 
-    
+
+def findMostLikedPosts():
+    dic = {}
+    for post in instaObject.getTotalSelfUserFeed():
+        urls = []
+        if post.get("carousel_media"): # if multiple pictures present
+           for pic in post.get("carousel_media"):
+                urls.append(pic["image_versions2"]["candidates"][0]["url"])    
+        else:
+            urls.append(post.get("image_versions2").get("candidates")[0].get("url"))
+        likes = post.get("like_count")
+        dic[likes] = urls
+    dic = sorted(dic.items(), key=lambda x: x[0], reverse=True)
+    for post in dic:
+        print("Likes: " + str(post[0]))
+        for i in range(len(post[1])):
+            print("Url " + str(i + 1) + ": " + str(post[1][i]))
+        print("\n")
+    return dic
+
 def main():
     instaObject.login()
-    print(findUnfollowingFollowers())
+    #pprint.pprint(instaObject.getTotalSelfUserFeed()[0])
+    findMostLikedPosts()
 
 
 if __name__ == "__main__":
