@@ -1,16 +1,16 @@
 from InstagramAPI import InstagramAPI
-import sys, pprint
+import sys
 
-username, password, option = sys.argv[1], sys.argv[2], sys.argv[3]
+username, password = sys.argv[1], sys.argv[2]
 instaObject = InstagramAPI(username, password)
 
-def findBadFriends():
+def getBadFriends():
     followers = getFollowers()
     following = getFollowing()
     badFriends = set(following).difference(set(followers))
     return badFriends  
 
-def findUnfollowingFollowers():
+def getUnfollowingFollowers():
     followers = getFollowers()
     following = getFollowing()
     goodFriends = set(followers).difference(set(following))
@@ -35,7 +35,7 @@ def getVerifiedFollowing():
             verified.append(person.get("username"))
     return verified 
 
-def findMostLikedPosts():
+def getMostLikedPosts():
     dic = {}
     for post in instaObject.getTotalSelfUserFeed():
         urls = []
@@ -47,17 +47,34 @@ def findMostLikedPosts():
         likes = post.get("like_count")
         dic[likes] = urls
     dic = sorted(dic.items(), key=lambda x: x[0], reverse=True)
+    liked_posts = ""
     for post in dic:
-        print("Likes: " + str(post[0]))
+        liked_posts += "Likes: " + str(post[0]) + "\n"
         for i in range(len(post[1])):
-            print("Url " + str(i + 1) + ": " + str(post[1][i]))
-        print("\n")
-    return dic
+            liked_posts += "Url " + str(i + 1) + ": " + str(post[1][i]) + "\n"
+        liked_posts += "\n"
+    return liked_posts
+
 
 def main():
+    options = {1: getFollowing,
+           2: getFollowers,
+           3: getVerifiedFollowing,
+           4: getBadFriends,
+           5: getUnfollowingFollowers,
+           6: getMostLikedPosts}
+
     instaObject.login()
     #pprint.pprint(instaObject.getTotalSelfUserFeed()[0])
-    findMostLikedPosts()
+    choice = input("1: List who you are following.\n" + 
+                   "2: List who follows you.\n" +
+                   "3: List verified accounts that you follow.\n" + 
+                   "4: List those who you follow but do not follow you back.\n" + 
+                   "5: List those who follow you but you do not follow back.\n" + 
+                   "6: List the like count and URL's of your posts that have recieved the most likes.\n\n" + 
+                   "Choose an option: ")
+    print("\n\n")
+    print(options[int(choice)]())
 
 
 if __name__ == "__main__":
