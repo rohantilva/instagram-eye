@@ -6,12 +6,12 @@ Simple script that has functionality to give users an easy way to watch over the
 
 ## Motivation
 
-There are a few of similar bots on Github. Unfortunately, most of the scripts only have options to
+There are a few similar bots on Github. Unfortunately, most of these scripts only have options to
 DO things, rather than just VIEW them. For example, some scripts will automatically unfollow users
 who you follow but do not follow you back - in some cases, you may just want to view these profiles, 
 rather than unfollow them immediately. This is especially true when it comes to following verified
-accounts; chances are they do not follow you back. This script provides the read-only functionality
-that some other scripts available do not.
+accounts; chances are they do not follow you back, so these script would cause you to unfollow these
+accounts. This script provides the read-only functionality that some other scripts lack.
 
 ---------------------
 
