@@ -73,7 +73,7 @@ def main():
                    "5: List those who follow you but you do not follow back.\n" + 
                    "6: List the like count and URL's of your posts that have recieved the most likes.\n\n" + 
                    "Choose an option: ")
-    print("\n\n")
+    print("\n")
     print(options[int(choice)]())
 
 
