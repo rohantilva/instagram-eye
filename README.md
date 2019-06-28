@@ -17,30 +17,30 @@ that some other scripts available do not.
 
 ## Usage
 
-'''
+```
 python3 app.py <instagram_username> <instagram_password>
-'''
+```
 
 **After running this script, you will be presented with a prompt that looks like the following**
 
-'''
+```
 1: List who you are following.
 2: List who follows you.
 3: List verified accounts that you follow.
 4: List those who you follow but do not follow you back.
 5: List those who follow you but you do not follow back.
 6: List the like count and URL's of your posts that have recieved the most likes.
-'''
+```
 
 **Choose an option and your results will be returned to your shell**
 
 ---------------------
 
-# Outside Packages
+## Outside Packages
 
 Created using [this](https://github.com/LevPasha/Instagram-API-python) really cool package. It can be
 installed by running: 
 
-'''
+```
 pip install InstagramAPI
-'''
+```
