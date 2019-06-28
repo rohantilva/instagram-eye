@@ -21,7 +21,7 @@ that some other scripts available do not.
 python3 app.py <instagram_username> <instagram_password>
 ```
 
-**After running this script, you will be presented with a prompt that looks like the following**
+**After running this script, you will be presented with a prompt that looks like the following:**
 
 ```
 1: List who you are following.
@@ -32,7 +32,7 @@ python3 app.py <instagram_username> <instagram_password>
 6: List the like count and URL's of your posts that have recieved the most likes.
 ```
 
-**Choose an option and your results will be returned to your shell**
+Choose an option and your results will be returned to your shell.
 
 ---------------------
 
